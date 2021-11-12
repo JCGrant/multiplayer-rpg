@@ -2,10 +2,14 @@ extends Node2D
 
 var player_scene= preload("res://../Player.tscn")
 
+func _ready():
+	visible = false
+
 func setup_state(state):
 	for player_id in state.players:
 		var player = state.players[player_id]
 		spawn_player(player_id, player)
+	visible = true
 
 func spawn_player(player_id, player):
 	var new_player = player_scene.instance()
