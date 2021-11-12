@@ -1,8 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tilesets/DirtOnGrass.tres" type="TileSet" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://assets/tilesets/GrassOnOcean.tres" type="TileSet" id=4]
 [ext_resource path="res://assets/water_waves_animated_texture.tres" type="Texture" id=5]
 [ext_resource path="res://shaders/tilemap_texture_replacer.shader" type="Shader" id=6]
@@ -11,6 +9,7 @@
 [ext_resource path="res://assets/tilesets/Trees.tres" type="TileSet" id=9]
 [ext_resource path="res://assets/tilesets/Flowers.tres" type="TileSet" id=10]
 [ext_resource path="res://assets/tilesets/Bridges.tres" type="TileSet" id=11]
+[ext_resource path="res://scenes/Level.gd" type="Script" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -25,6 +24,7 @@ shader_param/color_to_replace = Vector3( 80, 167, 232 )
 shader_param/texture_to_replace_with = ExtResource( 5 )
 
 [node name="Level" type="Node2D"]
+script = ExtResource( 12 )
 
 [node name="GrassOnOcean" type="TileMap" parent="."]
 material = SubResource( 1 )
@@ -90,14 +90,4 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -2424838, 1, 0, -2424830, 1, 1, -2293766, 1, 2, -1114110, 6, 0, -851981, 6, 0, -917501, 4, 0, -917497, 2, 0, -786440, 4, 0, -720900, 6, 0, -589840, 6, 0, -655358, 5, 131073, -458771, 6, 65536, -524275, 0, 0, -458743, 5, 65536, -327686, 2, 0, -393214, 4, 0, -196627, 6, 0, -131086, 1, 0, -196598, 1, 0, 131056, 0, 0, 131062, 6, 0, 65543, 0, 0, 196597, 4, 0, 131074, 5, 131073, 196624, 5, 131073, 262145, 2, 0, 327695, 5, 65536, 458739, 5, 65536, 393219, 6, 65536, 720884, 6, 65536, 1114109, 6, 65536 )
 
-[node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -0.739075, 4.60887 )
-
-[node name="Camera2D" type="Camera2D" parent="YSort"]
-position = Vector2( -0.739075, 4.60887 )
-current = true
-zoom = Vector2( 0.3, 0.3 )
-process_mode = 0
-limit_smoothed = true
-smoothing_enabled = true
-script = ExtResource( 3 )
+[node name="Players" type="YSort" parent="YSort"]
