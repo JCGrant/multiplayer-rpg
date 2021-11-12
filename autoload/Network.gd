@@ -47,10 +47,11 @@ remote func _on_server_messages(messages):
 func is_local_player(player_id):
 	return player_id == get_tree().get_network_unique_id()
 
-var message_id = 1
+var message_count = 1
 func get_message_id():
-	return str(get_tree().get_network_unique_id()) + str(message_id)
-	message_id += 1
+	var message_id = str(get_tree().get_network_unique_id()) + str(message_count)
+	message_count += 1
+	return message_id
 
 func send(type, payload={}):
 	var id = get_message_id()
